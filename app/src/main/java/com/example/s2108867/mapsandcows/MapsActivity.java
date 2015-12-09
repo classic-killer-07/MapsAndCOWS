@@ -1,12 +1,17 @@
 package com.example.s2108867.mapsandcows;
 
+import android.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity {
@@ -52,8 +57,18 @@ public class MapsActivity extends FragmentActivity {
                 setUpMap();
             }
         }
-    }
+        View interfaceview;
 
+        if (interfaceview==null){
+            interfaceview=getSupportFragmentManager().findFragmentById(R.id.interact).getView();
+        }
+    }
+    Marker israel;
+    Marker kabul;
+    Marker england;
+    Marker newyork;
+    Marker timbuktu;
+    Marker lubbock;
     /**
      * This is where we can add markers or lines, add listeners or move the camera. In this case, we
      * just add a marker near Africa.
@@ -61,36 +76,53 @@ public class MapsActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(0, 0))
-                .title("Marker")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.cow2))
+        israel=mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(31, 35))
+                .title("Israel")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.cowmarker))
+                .snippet("CORRECT!")
         );
-        mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(20, 10))
-                        .title("Marker")
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.cow2))
+        kabul = mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(34, 69))
+                        .title("Kabul")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.cowmarker))
+                        .snippet("WRONG!")
         );
-        mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(20, -10))
-                        .title("Marker")
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.cow2))
-
+         england= mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(52, -1))
+                        .title("England")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.cowmarker))
+                        .snippet("Wrong!")
         );
-        mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(20, 0))
-                        .title("Marker")
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.cow2))
+         newyork= mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(40, -74))
+                        .title("Kabul")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.cowmarker))
+                        .snippet("WRONG!")
         );
-        mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(10, 5))
-                        .title("Marker")
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.cow2))
-        );
-        mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(10, -5))
-                        .title("Marker")
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.cow2))
+         timbuktu= mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(16, -3))
+                        .title("Timbuktu")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.cowmarker))
+                        .snippet("WRONG!")
+         );
+         lubbock= mMap.addMarker(new MarkerOptions()
+                 .position(new LatLng(33, -101.855072))
+                 .title("Lubbock")
+                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.cowmarker))
+                 .snippet(" a nice little town in the middle of")
         );
     }
+
+    public static class InteractiveFragment extends Fragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            return inflater.inflate(R.layout.layoutport, container, false);
+        }
+    }
 }
+
+
+// Where is the illuminati located?

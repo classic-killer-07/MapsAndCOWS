@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity {
 
+    View interfaceview;
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
     @Override
@@ -57,10 +58,10 @@ public class MapsActivity extends FragmentActivity {
                 setUpMap();
             }
         }
-        View interfaceview;
+
 
         if (interfaceview==null){
-            interfaceview=getSupportFragmentManager().findFragmentById(R.id.interact).getView();
+//            interfaceview=getSupportFragmentManager().findFragmentById(R.id.interact).getView();
         }
     }
     Marker israel;
@@ -119,7 +120,7 @@ public class MapsActivity extends FragmentActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
-            return inflater.inflate(R.layout.layoutport, container, false);
+            return inflater.inflate(R.layout.layout_fragment, container, false);
         }
     }
 }
